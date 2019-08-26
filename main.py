@@ -47,7 +47,7 @@ class MontyHall:
 def simulation():
     mh = MontyHall()
     mh.sim_game(True)
-    inp = input("How many iterations do you want to run?")
+    inp = input("How many iterations do you want to run?\n")
     iterations = int(inp)
     keep_choice_wins = 0
     change_choice_wins = 0
@@ -61,5 +61,13 @@ def simulation():
     print(f"Changing the first choice resulted in {change_choice_wins} wins out of {iterations} games, or {change_choice_wins / iterations * 100}% of the time")
 
 
-    
+if __name__ == "__main__":
+    print("Welcome! Would you like to play the game, or simulate the problem?\n")
+    type = input("1. play\n2. sim\n\n")
+    if type == "1":
+        pass
+    elif type == "2":
+        simulation()
+    else:
+        print("not a valid choice.")
 
