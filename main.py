@@ -43,6 +43,22 @@ class MontyHall:
             return False    
 
 
+def play():
+    mh = MontyHall()    
+    inp = input("Choose a door! (1, 2, or 3)\n")
+    mh.first_choice = int(inp)
+    print(f"\nDoor number {inp}, nice choice.\nI am going to give you a hint\n")
+    print(f"Door #{mh.goat_shown} is a goat! Knowing this, would you like to switch doors?\n")
+    inp = input(f"1. keep door #{mh.first_choice} 2. switch doors\n")
+    if inp == "1":
+        mh.keep_choice()
+    else:
+        mh.change_choice()
+    if mh.did_win():
+        print("\nYou win a whole car!")
+    else:
+        print("\nYou get a goat. Better luck next time")
+
 
 def simulation():
     mh = MontyHall()
@@ -51,7 +67,7 @@ def simulation():
     iterations = int(inp)
     keep_choice_wins = 0
     change_choice_wins = 0
-    for i in range(iterations):
+    for _ in range(iterations):
         mh = MontyHall()
         if mh.sim_game(True) is True:
             keep_choice_wins += 1
@@ -60,12 +76,11 @@ def simulation():
     print(f"Keeping the first choice resulted in {keep_choice_wins} wins out of {iterations} games, or {keep_choice_wins / iterations * 100}% of the time")
     print(f"Changing the first choice resulted in {change_choice_wins} wins out of {iterations} games, or {change_choice_wins / iterations * 100}% of the time")
 
-
 if __name__ == "__main__":
     print("Welcome! Would you like to play the game, or simulate the problem?\n")
     type = input("1. play\n2. sim\n\n")
     if type == "1":
-        pass
+        play()
     elif type == "2":
         simulation()
     else:
